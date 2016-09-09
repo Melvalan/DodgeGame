@@ -13,19 +13,13 @@ namespace DodgeGame
 
             //Instantiate a Unit that will represent the player.
             Unit playerUnit = new Unit();
-
-            // Set data for this player's Unit
-            playerUnit.unitGraphic = "@";
-            playerUnit.x = 10;
-            playerUnit.y = 5;
-
-            Unit enemyUnit = new Unit();
+            playerUnit.SetPosition(-10, 5);
 
             // Instanciate the enemy
-            enemyUnit.unitGraphic = "X";
-            enemyUnit.x = 20;
-            enemyUnit.y = 17;
+            Unit enemyUnit = new Unit();
+            enemyUnit.SetPosition(20,17);
 
+            // Draw both units.
             enemyUnit.Draw();
             playerUnit.Draw();
 
