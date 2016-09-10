@@ -10,18 +10,13 @@ namespace DodgeGame
     {
         static void Main()
         {
+            // Create a new game
+            Game game = new Game();
 
-            //Instantiate a Unit that will represent the player.
-            Unit playerUnit = new Unit();
-            playerUnit.SetPosition(-10, 5);
+            // Run the game
+            game.Run();
 
-            // Instanciate the enemy
-            Unit enemyUnit = new Unit();
-            enemyUnit.SetPosition(20,17);
-
-            // Draw both units.
-            enemyUnit.Draw();
-            playerUnit.Draw();
+            // When we get here, the game is over.
 
             // Program END 
             // Do some clean-up

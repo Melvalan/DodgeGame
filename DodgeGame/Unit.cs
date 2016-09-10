@@ -8,47 +8,42 @@ namespace DodgeGame
 {
     public class Unit
     {
-        public int x;
-        private int y;
-        private string unitGraphic = "@";
-
-        public void SetPosition( int x, int y)
+        public Unit(int x, int y, string unitGraphic)
         {
-            if (x < 0 || x >= Console.WindowWidth &&
-                y < 0 && y >= Console.WindowHeight)
+            this.UnitGraphic = unitGraphic;
+            this.X = x;
+            this.Y = y;
+        }
+
+        public int X // The way the rest of the program interacts with X
+        {
+            get
             {
-                // Freak out and put some kind of error message
-                throw new Exception("Invalid X coordinate passed.");
+                return _x;
             }
+            set
+            {
+                if (value < 0 || value >= Console.WindowWidth)
+                {
+                    throw new Exception("Invalid X coordinate passed");
+                }
+                _x = value;
+            }
+        }
+        private int _x; // Where the value of x is actually stored
 
-            // If we get here, everything is awesome.
-            this.x = x;
-            this.y = y;
+        public int Y;
 
-            // Instead of failing silently, consider two other possibilities:
+        public string UnitGraphic;
 
-            // OPTION 1: Try to "fix" the input. i.e. something like:
-            // if(x < 0)
-            // {
-            //     x = 0;
-            // }
+        public void MoveLeft()
+        {
 
-            // OPTION 2: Fail LOUDLY
-            // if(x < 0)
-            // {
-                // Freak out and put some kind of error message
-                // throw new Exception("Invalid X coordinate passed.");
-            // }
         }
 
-        public int GetX()
+        public void MoveRight()
         {
-            return x;
-        }
 
-        public int GetY()
-        {
-            return y;
         }
 
         // This draws the unit on the screen.
@@ -57,8 +52,8 @@ namespace DodgeGame
             // This is an instance method, so if we refer to fields like x and y
             // we will be using the values that belong to this instance and this 
             // instance only!
-            Console.SetCursorPosition( this.x, this.y );
-            Console.Write( this.unitGraphic );
+            Console.SetCursorPosition( this.X, this.Y );
+            Console.Write( this.UnitGraphic );
         }
 
     }
