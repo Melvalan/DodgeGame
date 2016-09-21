@@ -11,10 +11,10 @@ namespace DodgeGame
         public Game()
         {
             //Instantiate a Unit that will represent the player.
-            playerUnit = new Unit(10, 5, "@");
+            playerUnit = new PlayerUnit(10, 5, "@"); 
 
             // Instanciate the enemy
-            enemyUnit = new Unit(20, 17, "X");
+            enemyUnit = new EnemyUnit(20, 17, "X");
         }
 
         private Unit playerUnit;
@@ -22,9 +22,16 @@ namespace DodgeGame
 
         public void Run()
         {
-            // Draw both units.
-            playerUnit.Draw();
-            enemyUnit.Draw();
+            while (true)
+            {
+                // First Update all of our units
+                playerUnit.Update();
+                enemyUnit.Update();
+
+                // Draw both units.
+                playerUnit.Draw();
+                enemyUnit.Draw();
+            }
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DodgeGame
 {
-    public class Unit
+    abstract public class Unit
     {
         public Unit(int x, int y, string unitGraphic)
         {
@@ -32,18 +32,28 @@ namespace DodgeGame
         }
         private int _x; // Where the value of x is actually stored
 
-        public int Y;
-
-        public string UnitGraphic;
-
-        public void MoveLeft()
+        public int Y // The way the rest of the program interacts with Y
         {
-
+            get
+            {
+                return _y;
+            }
+            set
+            {
+                if (value < 0 || value >= Console.WindowHeight)
+                {
+                    throw new Exception("Invalid Y coordinate passed");
+                }
+                _y = value;
+            }
         }
+        private int _y;
 
-        public void MoveRight()
+        public string UnitGraphic { get; set; }
+        
+        virtual public void Update()
         {
-
+            // Virtual allows child classes to override this method and do their own thing.
         }
 
         // This draws the unit on the screen.
