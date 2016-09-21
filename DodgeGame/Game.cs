@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace DodgeGame
@@ -22,18 +23,22 @@ namespace DodgeGame
 
         public void Run()
         {
+            // TEMPORARY - Let's try to set a fixed frame rate
+            int desiredFPS = 30;
+            int deltaTimeMS = 1000 / desiredFPS;
+
             while (true)
-            {
+            {                
                 // First Update all of our units
                 playerUnit.Update();
                 enemyUnit.Update();
-
-                // Clear the old screen!
-                Console.Clear();
-
+               
                 // Draw both units.
                 playerUnit.Draw();
                 enemyUnit.Draw();
+
+                // Now we need to wait for the correct time for our FPS
+                Thread.Sleep(deltaTimeMS);
             }
         }
     }

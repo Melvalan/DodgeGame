@@ -27,6 +27,7 @@ namespace DodgeGame
                 {
                     throw new Exception("Invalid X coordinate passed");
                 }
+                Undraw(); // We are moving, so undraw
                 _x = value;
             }
         }
@@ -44,6 +45,7 @@ namespace DodgeGame
                 {
                     throw new Exception("Invalid Y coordinate passed");
                 }
+                Undraw();
                 _y = value;
             }
         }
@@ -64,6 +66,12 @@ namespace DodgeGame
             // instance only!
             Console.SetCursorPosition( this.X, this.Y );
             Console.Write( this.UnitGraphic );
+        }
+
+        public void Undraw()
+        {
+            Console.SetCursorPosition(this.X, this.Y);
+            Console.Write( ' ' );
         }
 
     }
