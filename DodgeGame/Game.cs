@@ -28,6 +28,9 @@ namespace DodgeGame
                 playerUnit.Update();
                 enemyUnit.Update();
 
+                // Clear the old screen!
+                Console.Clear();
+
                 // Draw both units.
                 playerUnit.Draw();
                 enemyUnit.Draw();
