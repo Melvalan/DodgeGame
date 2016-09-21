@@ -10,6 +10,9 @@ namespace DodgeGame
     {
         static void Main()
         {
+            // Let's hide the blinking cursor
+            Console.CursorVisible = false;
+
             // Create a new game
             Game game = new Game();
 
