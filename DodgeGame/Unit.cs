@@ -74,5 +74,19 @@ namespace DodgeGame
             Console.Write( ' ' );
         }
 
+        public bool IsCollidingWith(Unit other)
+        {
+            // "this" is the current Unit
+            // "other" is the other Unit
+
+            if(this.X == other.X && this.Y == other.Y)
+            {
+                // We are in the same square, so we are colliding.
+                return true;
+            }
+
+            return false;
+        }
+
     }
 }

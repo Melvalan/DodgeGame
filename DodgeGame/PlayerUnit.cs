@@ -13,7 +13,7 @@ namespace DodgeGame
 
         }
 
-        override public void Update()
+        override public void Update(int deltaTimeMS)
         {
             // When the PLAYER's update function gets called, we would like to execute this INSTEAD of our
             // parent class' Update. In other words, we want to OVERRIDE the parent.
@@ -52,7 +52,7 @@ namespace DodgeGame
                 // After "break" we end up here.
             }
             
-            base.Update();
+            base.Update(deltaTimeMS);
         }
     }
 }

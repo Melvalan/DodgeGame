@@ -15,8 +15,23 @@ namespace DodgeGame
 
         }
 
-        public override void Update()
+        public int TimeBetweenMoves = 100; // In Milliseconds
+        private int timeSinceLastMove = 0;
+
+        public override void Update(int deltaTimeMS)
         {
+            // Has enough time passed that we should be moving?
+            timeSinceLastMove += deltaTimeMS;
+
+            if(timeSinceLastMove < TimeBetweenMoves)
+            {
+                // Not enough time has passed. Let's not do ANYTHING.
+                return; //Exits the function
+            }
+
+            // If we get here, it means we need to make a move
+            timeSinceLastMove -= TimeBetweenMoves;
+
             // Do AI here!
 
             // These enemies simply move from the right side of the screen, to the left. If they go out of bounds, then we delete ourselves... how does that work?
@@ -32,7 +47,7 @@ namespace DodgeGame
             }
 
             // Now that the AI calculation is done, let's call out base class' Update function in case it has any important work to do.
-            base.Update();
+            base.Update(deltaTimeMS);
         }
     }
 }
