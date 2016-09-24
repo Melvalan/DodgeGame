@@ -53,7 +53,7 @@ namespace DodgeGame
 
         public string UnitGraphic { get; set; }
         
-        virtual public void Update()
+        virtual public void Update(int deltaTimeMS)
         {
             // Virtual allows child classes to override this method and do their own thing.
         }
